@@ -15,13 +15,13 @@ def get_data():
 
 def show_notes(data):
     print('Current notes:\n')
-    [print(i) for i in data["Notes"]] if len(data["Notes"]) != 0 else print("You dont have any note yet.\n")
+    [print(f'\033[1m{i}\033[0m') for i in data["Notes"]] if len(data["Notes"]) != 0 else print("\033[1mYou dont have any note yet.\033[0m")
 
 data = get_data()
-print('TO-DO List ready for notes!\n')
+print(f'\033[1m{25 * '*'} TO-DO List ready for notes! {25 * '*'}\033[0m\n')
 while True:
     show_notes(data)
-    note = input("\nType note or key word for exit: EXIT\n")
+    note = input("\n\u001b[32mType note or key word for exit: EXIT\033[0m\n")
     if note == 'EXIT':
         print('\nProgramm finished. All data saved.')
         break
