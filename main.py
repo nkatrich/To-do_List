@@ -15,9 +15,14 @@ def show_notes(data):
     print('Current notes:\n')
     [print(f'\033[1m{i}\033[0m') for i in data["Notes"]] if len(data["Notes"]) != 0 else print("\033[1mYou dont have any note yet.\033[0m")
 
-def remove_notes(note, type):
+def remove_notes(noteTo, type):
     if type == 'REM':
-        pass
+        noteTo.remove('REM')
+        noteTo = " ".join(noteTo)
+        for i in data["Notes"]:
+            if i == noteTo:
+                ind = data["Notes"].index(noteTo)
+                data["Notes"].pop(ind)
 
 print(f'\033[1m{25 * '*'} TO-DO List ready for notes! {25 * '*'}\033[0m\n')
 data = get_data()
@@ -32,7 +37,8 @@ while True:
     elif note[0] == 'REM':
         remove_notes(note, 'REM')
     elif note[0] == 'DEL':
-        remove_notes(note, 'DEL')
+        remove_notes(None, 'DEL')
     else:
+        note = " ".join(note)
         data["Notes"].append(note)
         in_data()
