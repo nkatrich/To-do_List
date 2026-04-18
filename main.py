@@ -5,7 +5,6 @@ fl_nm = "data.json"
 def in_data():
     with open(fl_nm, "w") as f:
         json.dump(data, f, indent=4)
-        print("Data have been saved!\n")
 
 def get_data():
     with open(fl_nm, "r") as f:
@@ -21,21 +20,19 @@ def remove_notes(noteTo, type):
         noteTo = " ".join(noteTo)
         for i in data["Notes"]:
             if i == noteTo:
-                ind = data["Notes"].index(noteTo)
-                data["Notes"].pop(ind)
-                in_data()
+                data["Notes"].remove(i)
                 break
     else:
         data["Notes"].clear()
-        in_data()
+    in_data()
 
+# Start of program
 print(f'\033[1m{25 * '*'} TO-DO List ready for notes! {25 * '*'}\033[0m\n')
 data = get_data()
 
 while True:
     show_notes(data)
-    note = input("\n\u001b[32mType note, type note for delete(key word for delete specific: REM)(or delete all type: DEL) or key word for exit: EXIT\033[0m\n")
-    note = note.split()
+    note = input("\n\u001b[32mType note, type note for delete(key word for delete specific: REM)(or delete all type: DEL) or key word for exit: EXIT\033[0m\n").split()
     if note[0] == 'EXIT':
         print('\nProgramm finished. All data saved.')
         break
