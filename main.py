@@ -23,6 +23,8 @@ def remove_notes(noteTo, type):
             if i == noteTo:
                 ind = data["Notes"].index(noteTo)
                 data["Notes"].pop(ind)
+                in_data()
+                break
 
 print(f'\033[1m{25 * '*'} TO-DO List ready for notes! {25 * '*'}\033[0m\n')
 data = get_data()
