@@ -33,7 +33,9 @@ data = get_data()
 while True:
     show_notes(data)
     note = input("\n\u001b[32mType note, type note for delete(key word for delete specific: REM)(or delete all type: DEL) or key word for exit: EXIT\033[0m\n").split()
-    if note[0] == 'EXIT':
+    if not note:
+        print('Write note to start!')
+    elif note[0] == 'EXIT':
         print('\nProgramm finished. All data saved.')
         break
     elif note[0] == 'REM':
